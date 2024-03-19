@@ -68,7 +68,7 @@ VMLIBDIR=""
 KPSURL=""
 GOVC_DATACENTER=""
 
-while getopts "v:o:m:f:c:l:u:p:d:n:r:s:t:zkh" opt; do
+while getopts "v:o:m:f:c:l:u:p:d:n:r:s:t:z:kh" opt; do
   case "$opt" in
     "v")
       HYPERVISOR="$OPTARG";;
