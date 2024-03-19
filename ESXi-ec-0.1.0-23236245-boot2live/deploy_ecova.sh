@@ -38,6 +38,7 @@ USAGE:
      -p : ESXi/VC account password.
      -n : ESXi/VC network name (e.g 'VM Network' ).
      -d : ESXi/VC datastore name (e.g. 'datastore1' ).
+     -z : VC datacenter name
 
   -v fusion|ws
      -t Virtual Machine library directory (under which to store imported .ova VM)
@@ -65,8 +66,9 @@ GOVC_INSECURE=""
 KROOTPWD=""
 VMLIBDIR=""
 KPSURL=""
+GOVC_DATACENTER=""
 
-while getopts "v:o:m:f:c:l:u:p:d:n:r:s:t:kh" opt; do
+while getopts "v:o:m:f:c:l:u:p:d:n:r:s:t:zkh" opt; do
   case "$opt" in
     "v")
       HYPERVISOR="$OPTARG";;
@@ -88,6 +90,8 @@ while getopts "v:o:m:f:c:l:u:p:d:n:r:s:t:kh" opt; do
       export GOVC_NETWORK="$OPTARG";;
     "k")
       export GOVC_INSECURE=1;;
+    "z")
+      export GOVC_DATACENTER="$OPTARG";;
     "r")
       KROOTPWD="$OPTARG";;
     "t")
@@ -144,12 +148,13 @@ if [ "$HYPERVISOR" == "esx" ] ; then
   test -n "$GOVC_PASSWORD" || { fatal "missing -p arg\n$(usage)"; }
   test -n "$GOVC_DATASTORE" || { fatal "missing -d arg\n$(usage)"; }
   test -n "$GOVC_NETWORK" || { fatal "missing -n arg\n$(usage)"; }
+  test -n "$GOVC_DATACENTER" || { fatal "missing -z arg\n$(usage)"; }
   test -x "$GOVC" || { fatal "missing govc command"; }
 fi
 if [ "$HYPERVISOR" == "fusion" ]; then
   test -d "$FUSIONPATH" || {
     fatal "missing VMware Fusion.app, if installed at location other than \
-'$FUSIONPATH', please export env var FUSIONPATH pointing to correct path"; 
+'$FUSIONPATH', please export env var FUSIONPATH pointing to correct path";
   }
   VMRUN="$FUSIONPATH/Contents/Public/vmrun"
   test -x "$VMRUN" || { fatal "missing '$VMRUN' command"; }
@@ -222,7 +227,7 @@ deploy2esx() {
   "NetworkMapping": [
     {
       "Name": "VM Network",
-      "Network": ""
+      "Network": "$GOVC_NETWORK"
     }
   ],
   "MarkAsTemplate": false,
@@ -286,7 +291,7 @@ deploy2local() {
   # Wait for the machine to get IP.
   echo "Waiting for VM to acquire IP..."
   "$VMRUN" -T "$hypervisor" getGuestIPAddress "$VMX" -wait
-  
+
   echo "SUCCESS: Imported and powered on '$VMX'"
 }
 
