@@ -38,7 +38,7 @@ data:
             version: 2
             ethernets:
               ens192:
-                match: 
+                match:
                   driver: vmxnet3
                 dhcp4: true
         path: /etc/netplan/90-network-config.yaml
@@ -49,7 +49,7 @@ data:
     #   version: 2
     #   ethernets:
     #     ens192:
-    #       match: 
+    #       match:
     #         driver: vmxnet3
     #       dhcp4: true
     users:
@@ -60,7 +60,7 @@ data:
         shell: /bin/bash
         lock_passwd: false
         ssh-authorized-keys:
-          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDDJO27b2czBUwDq3niNOi8VROh/yG1tCPP7wEeXdMIh3Ih2ahDd7BnmP6ozafVgTpYjGuGb3Y1uN8M9kUBjBTvPjoubgO0iT3yXrOGepct/sXCpVxVUDyWEcpfIu/u+d2H32w8nJSfnOpvHGb4AtlJvRL6tHiBU1tB1QqwdWpZwKrudF9zXEUsdSGBQ0tBqnOBx/CDySkrOrQSYTKYThgJcs+hQj0ltMoTVbfKW5xjBCRYBCFgpN29fJEudR0V5hXEeXnTsbJT/YkXOp0h1DsXLzWGhy5Zpgx6P3lBP/fcMO69ay2J0jtiR1HjvXahqq6ovbnGVUxXBZNoZJ07dg9j kangwarn@Kangwarn-Chinthammits-MacBook-Pro.local"
+          - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDK+PexVaAUQUVzNWtYJIx/JGlduRnZUdx2PZNR4J5oYrQ25cmfLUv89qST/VGdLY585VZ5VL4pmX0dxWoghI6bD7z1jgedVa4y2xnwij8+Wps9BdMCpaBAf8zczG7KBN2JIFdoFf5Xfayn1bsF3YIkHS+o/owxwFYiDABq1m1PALezBw4VBcNtUv6l8UPwi1MDbKVKPAw5nRugyfOiyVqKdxf9zDtWnEChOgXt622fRUvbw2HuK99s/lMhYPvBt/u3Un2HrGd5rPCJ1BZcIFQ+0clHZ6pZSxQdR+ERV9hn6LgFYHLY4x54Kj3bFpVoyh6ZyZo8aXWvbbh54UfmEH3LbqvDagrulHD8y3dOknJy7tYJY1Q5dW2pk++SnWnW3FLX9QfFIbusUcWS1o2FMFP8MZV17nSKFIih5p67kY83cbLTE4Bn1+Ta4c0JKJhijdR+mWjQGgzTMwv8LQ1uxNhrm0TM5ZnpQr0A2KJEYQdRwjHcffh5Z42wghRbAcSLnrE= keng@keng-a01.vmware.com"
     ssh_pwauth: true
     disable_root: false
     chpasswd:
