@@ -3,12 +3,12 @@
 apiVersion: vmoperator.vmware.com/v1alpha1
 kind: VirtualMachine
 metadata:
-  name: windows-file-server
+  name: windows-11-ec-small
   namespace: default
   annotations:
     vmoperator.vmware.com/image-supported-check: disable
 spec:
-  className: best-effort-medium
+  className: best-effort-ec-small
   imageName: 192.168.101.2:8000/tinywin.ova
   powerState: poweredOn
   vmMetadata:
