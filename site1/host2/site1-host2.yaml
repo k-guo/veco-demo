@@ -24,9 +24,12 @@ spec:
   prune: true
   timeout: 1m
   patches:
-    - patch: |
-        - op: remove
-          path: /
-      target:
+    - target:
         kind: VirtualMachine
         name: linux-vm
+      patch: |-
+        $patch: delete
+        apiVersion: v1
+        kind: VirtualMachine
+        metadata:
+          name: linux-vm
