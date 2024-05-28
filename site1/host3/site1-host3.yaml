@@ -26,15 +26,6 @@ spec:
   patches:
     - target:
         kind: VirtualMachine
-        name: linux-vm
-      patch: |-
-        $patch: delete
-        apiVersion: v1
-        kind: VirtualMachine
-        metadata:
-          name: linux-vm
-    - target:
-        kind: VirtualMachine
         name: windows-12-small
       patch: |-
         $patch: delete
@@ -42,13 +33,3 @@ spec:
         kind: VirtualMachine
         metadata:
           name: windows-12-small
-    - target:
-        kind: Deployment
-        name: nginx
-      patch: |-
-        $patch: delete
-        apiVersion: v1
-        kind: Deployment
-        metadata:
-          name: nginx
-  
