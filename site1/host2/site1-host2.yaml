@@ -34,15 +34,6 @@ spec:
         metadata:
           name: linux-vm
     - target:
-        kind: VirtualMachine
-        name: windows-12-small
-      patch: |-
-        $patch: delete
-        apiVersion: v1
-        kind: VirtualMachine
-        metadata:
-          name: windows-12-small
-    - target:
         kind: Deployment
         name: nginx
       patch: |-

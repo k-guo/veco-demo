@@ -26,6 +26,15 @@ spec:
   patches:
     - target:
         kind: VirtualMachine
+        name: linux-vm
+      patch: |-
+        $patch: delete
+        apiVersion: v1
+        kind: VirtualMachine
+        metadata:
+          name: linux-vm
+    - target:
+        kind: VirtualMachine
         name: windows-12-small
       patch: |-
         $patch: delete
