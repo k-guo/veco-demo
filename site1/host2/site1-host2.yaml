@@ -33,13 +33,4 @@ spec:
         kind: VirtualMachine
         metadata:
           name: linux-vm
-    - target:
-        kind: Deployment
-        name: nginx
-      patch: |-
-        $patch: delete
-        apiVersion: v1
-        kind: Deployment
-        metadata:
-          name: nginx
   
